@@ -8,9 +8,8 @@ import br.com.fiap.am.james.dao.HistPrecoDAO;
 
 public abstract class HistPrecoBO {
 
-	public static List<HistPrecoBean> selecionar (Connection conexao) throws Exception {
-		List<HistPrecoBean> lstHistPreco = new HistPrecoDAO().selectAll(conexao);
+	public static List<HistPrecoBean> selecionar (Connection conexao, int tipo) throws Exception {
+		List<HistPrecoBean> lstHistPreco = new HistPrecoDAO().selectAll(conexao, tipo);		
 		return lstHistPreco;
 	}
-
 }

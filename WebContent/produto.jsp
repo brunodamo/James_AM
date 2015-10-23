@@ -20,7 +20,7 @@
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="get" action="midlet">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="midlet">
                                       <div class="form-group ">
                                           <label for="cd_hosp" class="control-label col-lg-2">Código da Hosp. <span class="required">*</span></label>
                                           <div class="col-lg-2">
@@ -31,35 +31,37 @@
                                               <input class="form-control" id="data" name="data" type="text" required />
                                           </div>  
                                       </div>
-                                        <label for="cemail" class="control-label col-lg-2">Produtos <span class="required">*</span></label>
+                                        <label for="produto_servico" class="control-label col-lg-2">Produtos <span class="required">*</span></label>
                                         <div class="col-lg-5">
-	                                         <select class="form-control m-bot15" id="cselect" name="produto">
-	                                             <option>Option 1</option>
-	                                             <option>Option 2</option>
-	                                             <option>Option 3</option>
+	                                         <select class="form-control m-bot15" id="produto_servico" name="produto_servico">
+	                                             <c:forEach var="n" items="${produtos}">
+	                                             		<option value="${n.produtoServico.codigoTipoServico}" valor="${n.preco}">${n.produtoServico.descricaoServico} - <fmt:formatNumber value="${n.preco}" type="currency" /></option>
+	                                             </c:forEach>
 	                                         </select>
 	                                     </div>
-                                      <label for="cselectqtd" class="control-label col-lg-2">Quantidade <span class="required">*</span></label>
+                                      <label for="qtd" class="control-label col-lg-2">Quantidade <span class="required">*</span></label>
 	                                      <div class="col-lg-2">
-	                                          <select class="form-control m-bot15" id="cselect" name="quant">
+	                                          <select class="form-control m-bot15" id="qtd" name="quant">
 		                                          <c:forEach var="i" begin="1" end="20">
 		                                              <option><c:out value="${i}"/></option>
 	                                              </c:forEach>
 	                                          </select>
 	                                      </div>
+                                      <input type="hidden" name="cd_func" value="9"/>
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Valor Total </label>
-                                          <div class="col-lg-10">
-                                              <span>R$ 500,00</span>
+                                          <div class="col-lg-10" style="margin-top: 8px;">
+                                              <span id="valor_total"></span>
                                           </div>
-                                      </div>                                         
+                                      </div> 
+                                      <input type="hidden" name="modulo" value="registrar_consumo"/>                                       
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
                          				      <button class="btn btn-primary" type="submit">Registrar</button>
                                               <button class="btn btn-default" type="reset">Cancelar</button>
                                           </div>
                                       </div>
-                                  </form>
+                                  </form>                        
                               </div>
 
                           </div>

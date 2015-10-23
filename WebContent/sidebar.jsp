@@ -13,8 +13,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>                     
                       <ul class="sub">
-                          <li><a class="" href="produto.jsp">Produto</a></li>                          
-                          <li><a class="" href="servico.jsp">Serviço</a></li>
+                          <li><a class="" href="midlet?modulo=carregarProdutos">Produto</a></li>                          
+                          <li><a class="" href="midlet?modulo=carregarSevicos">Serviço</a></li>
                       </ul>
                   </li>      
               </ul>

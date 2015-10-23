@@ -1,38 +1,24 @@
 
 $(window).load(function(){
 	$("#data").mask("99/99/9999");
+	
+	$('#qtd').change(function(){
+		valor_total();
+	});
+
+	$('#produto_servico').change(function(){
+		valor_total();
+	});
+	
 });
 
-$(function() {
-    // run the currently selected effect
-    function runEffect() {
-      // get effect type from
-      var selectedEffect = $( "#effectTypes" ).val();
- 
-      // most effect types need no options passed by default
-      var options = {};
-      // some effects have required parameters
-      if ( selectedEffect === "scale" ) {
-        options = { percent: 100 };
-      } else if ( selectedEffect === "size" ) {
-        options = { to: { width: 280, height: 185 } };
-      }
- 
-      // run the effect
-      $( "#effect" ).show( selectedEffect, options, 500, callback );
-    };
- 
-    //callback function to bring a hidden box back
-    function callback() {
-      setTimeout(function() {
-        $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
-      }, 1000 );
-    };
- 
-    // set effect from select menu value
-    $( ".errorHosp" ).click(function() {
-      runEffect();
-    });
- 
-    $( "#effect" ).hide();
-  });
+function valor_total (){
+	var quantidade = $('select[name="quant"]').val();
+	var valor = $("#produto_servico option:selected").attr("valor");
+	
+	var total = quantidade * valor;
+	
+	var formatado = numeral(total).format('$0,0.00');
+	
+	$('#valor_total').html('R'+formatado);
+}
