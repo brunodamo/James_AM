@@ -16,6 +16,13 @@ public class HistPrecoDAO {
 	private ResultSet rs = null;
 
 
+	/**
+	 * Metodo que da select em todos HistPrecoBean do banco
+	 * @param conexao
+	 * @param tipo
+	 * @return
+	 * @throws Exception
+	 */
 	public List<HistPrecoBean> selectAll (Connection conexao, int tipo) throws Exception {
 		List<HistPrecoBean> lstHistPreco = new ArrayList<HistPrecoBean>();
 		HistPrecoBean hp = null;

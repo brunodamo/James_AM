@@ -4,6 +4,7 @@
     
 <%@ include file="cabecalho.jsp"%>
 
+		<img src="img/hotel.jpg" class="img-responsive img-rounded" alt="lobby">
 
 
 <%@ include file="rodape.jsp"%>

@@ -8,8 +8,13 @@ import br.com.fiap.am.james.excecoes.Excecao;
 
 public abstract class HospedagemBO {
 
-
-	
+	/**
+	 * Metodo que valida o codigo de hospeag
+	 * @param cdHosp
+	 * @param conexao
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean validaCodigo(int cdHosp, Connection conexao) throws Exception{
 		try{
 			new HospedagemDAO().select(cdHosp, conexao);
@@ -18,6 +23,13 @@ public abstract class HospedagemBO {
 			throw new Excecao("Código de Hospedagem inválido!");
 		}
 	}
+	/**
+	 * Metodo que retorna o bean completo da hospedagem
+	 * @param cdHosp
+	 * @param conexao
+	 * @return
+	 * @throws Exception
+	 */
 	public static HospedagemBean retornaHospedagem(int cdHosp, Connection conexao) throws Exception{
 		return new HospedagemDAO().select(cdHosp, conexao);
 	}

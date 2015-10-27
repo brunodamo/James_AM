@@ -15,7 +15,13 @@ public class HospedagemDAO {
 	private PreparedStatement stmt  = null;
 	private ResultSet rs = null;
 	
-	
+	/**
+	 * Metodo que compara com o banco se existe codigo inserido no front
+	 * @param cdHospedagem
+	 * @param conexao
+	 * @return
+	 * @throws Exception
+	 */
 	public HospedagemBean select (int cdHospedagem, Connection conexao) throws Exception{
 			stmt = conexao.prepareStatement("SELECT H.CD_HOSPEDAGEM, R.CD_RESERVA, C.CD_PESSOA, C.NM_PESSOA,  F.CD_FUNCIONARIO, H.DT_ENTRADA, H.VC_PERC_DESCONTO FROM T_AM_LDB_HOSPEDAGEM H INNER JOIN T_AM_LDB_PESSOA C  ON H.CD_CLIENTE = C.CD_PESSOA  INNER JOIN T_AM_LDB_FUNCIONARIO F ON H.CD_FUNCIONARIO = F.CD_FUNCIONARIO INNER JOIN T_AM_LDB_RESERVA R ON H.CD_RESERVA = R.CD_RESERVA  WHERE H.CD_HOSPEDAGEM = ?");
 			stmt.setInt(1, cdHospedagem);

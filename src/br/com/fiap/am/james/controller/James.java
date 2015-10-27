@@ -31,16 +31,26 @@ public class James extends HttpServlet {
 	public James() {
 		super();
 	}
-
+	
+	/**
+	 * Atributo de conexao
+	 */
 	private Connection conexao = null;
 
-
+	
+	/**
+	 * Metodo que valida se o codigo da hospedagem existe
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
 	public void validarHospede (HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 			int codHosp = Integer.parseInt(request.getParameter("codHosp"));
 			if (HospedagemBO.validaCodigo(codHosp, conexao)){
 				request.setAttribute("hospedagem", HospedagemBO.retornaHospedagem(codHosp, conexao));
+				request.setAttribute("erro", false);
 				request.setAttribute("msg", "Código da Hospedagem Validado!");
 			}
 			int onde = Integer.parseInt(request.getParameter("redirecionar"));
@@ -51,11 +61,18 @@ public class James extends HttpServlet {
 			}
 		}catch (Exception e){
 			e.printStackTrace();
+			request.setAttribute("erro", true);
 			request.setAttribute("msg", "Código de Hospedagem Inválido!");
 			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);
 		}
 	}
-
+	
+	/**
+	 * Metodo que registra o consumo
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
 	public void registrarConsumo(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 		ConsumoBean c = new ConsumoBean();
@@ -77,8 +94,18 @@ public class James extends HttpServlet {
 		c.setFuncionario(f);
 		c.getFuncionario().setCodigoPessoa(Integer.parseInt(request.getParameter("cd_func")));
 		ConsumoBO.inserir(c, conexao);
+		request.setAttribute("registrado", true);
+		request.setAttribute("msg", "Consumo registrado com sucesso!");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
+	/**
+	 * Metodo que carrega produtos ou servicos dependendo do tipo de consumo
+	 * @param request
+	 * @param response
+	 * @param tipo
+	 * @throws Exception
+	 */
 	public void carregarItens(HttpServletRequest request, HttpServletResponse response, int tipo) throws Exception{
 		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 				if(tipo == 1){
@@ -89,7 +116,14 @@ public class James extends HttpServlet {
 			request.getRequestDispatcher("servico.jsp").forward(request, response);
 		}
 	}
-
+	
+	/**
+	 * Metodo que verifica se o consumo sera de produto ou servico
+	 * @param request
+	 * @param response
+	 * @param onde
+	 * @throws Exception
+	 */
 	public void redirecionar(HttpServletRequest request, HttpServletResponse response, int onde) throws Exception{
 		if(onde == 1){
 			request.setAttribute("redirect", 1);

@@ -28,7 +28,7 @@
                                           </div>
                                           <label for="cd_hosp" class="control-label col-lg-2">Nome do Hosp. <span class="required">*</span></label>
                                           <div class="col-lg-5">
-                                              <input class="form-control" id="cd_hosp" name="codigo" maxlength="8" readonly="readonly" value="${hospedagem.cliente.nomePessoa}" />
+                                              <input class="form-control" id="cd_hosp" name="codigo" readonly="readonly" value="${hospedagem.cliente.nomePessoa}" />
                                           </div>
                                       </div>
                                           <label for="data" class="control-label col-lg-2">Data Solicitação <span class="required">*</span></label>
@@ -52,15 +52,14 @@
 	                                          </select>
 	                                      </div>
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">Valor Total </label>
+                                          <label for="valor_total" class="control-label col-lg-2">Valor Total </label>
                                           <div class="col-lg-5" style="margin-top: 8px;">
-                                              <span id="valor_total"></span>
-                                          </div>
+											<input class="form-control" id="valor_total" name="valor_total"  readonly="readonly" />                                          </div>
                                       </div>                                         
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
                                               <button class="btn btn-primary" type="submit">Registrar</button>
-                                              <button class="btn btn-default" type="reset">Cancelar</button>
+                                              <button class="btn btn-default" type="reset" name="cancela" id="cancela" >Cancelar</button>
                                           </div>
                                       </div>
                                   </form>

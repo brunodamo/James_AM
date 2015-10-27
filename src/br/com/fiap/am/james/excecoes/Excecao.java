@@ -1,5 +1,10 @@
 package br.com.fiap.am.james.excecoes;
 
+/**
+ * Metodo que verifica os exceptions mais comuns
+ * @author rm73871
+ *
+ */
 public class Excecao extends Exception {
 	public Excecao(Exception e) {
 		if (e.getClass().toString()
@@ -20,6 +25,10 @@ public class Excecao extends Exception {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Metodo consturtor que permite printar uma mensagem de erro, facilitando a identificacao do mesmo
+	 * @param x
+	 */
 	public Excecao (String x){
 		System.out.println(x);
 	}

@@ -1,6 +1,10 @@
 package br.com.fiap.am.james.testes;
 
 public class TesteData {
+	/**
+	 * Metodo main da classe TesteData
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		String data = "29/12/1992";
     	int dia = Integer.parseInt(data.substring(0,2));
