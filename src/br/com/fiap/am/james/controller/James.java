@@ -37,7 +37,7 @@ public class James extends HttpServlet {
 
 	public void validarHospede (HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			conexao = ConnectionFactory.controlarInstancia().getConnection("","");
+			conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 			int codHosp = Integer.parseInt(request.getParameter("codHosp"));
 			if (HospedagemBO.validaCodigo(codHosp, conexao)){
 				request.setAttribute("hospedagem", HospedagemBO.retornaHospedagem(codHosp, conexao));
@@ -57,6 +57,7 @@ public class James extends HttpServlet {
 	}
 
 	public void registrarConsumo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 		ConsumoBean c = new ConsumoBean();
 		HospedagemBean h = new HospedagemBean();
 		c.setHospedagem(h);
@@ -75,15 +76,16 @@ public class James extends HttpServlet {
 		FuncionarioBean f = new FuncionarioBean();
 		c.setFuncionario(f);
 		c.getFuncionario().setCodigoPessoa(Integer.parseInt(request.getParameter("cd_func")));
-		ConsumoBO.inserir(c, ConnectionFactory.controlarInstancia().getConnection("", ""));
+		ConsumoBO.inserir(c, conexao);
 	}
 
 	public void carregarItens(HttpServletRequest request, HttpServletResponse response, int tipo) throws Exception{
-		if(tipo == 1){
-			request.setAttribute("produtos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 1));
+		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
+				if(tipo == 1){
+			request.setAttribute("produtos", HistPrecoBO.selecionar(conexao, 1));
 			request.getRequestDispatcher("produto.jsp").forward(request, response);			
 		}else{
-			request.setAttribute("servicos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 2));
+			request.setAttribute("servicos", HistPrecoBO.selecionar(conexao, 2));
 			request.getRequestDispatcher("servico.jsp").forward(request, response);
 		}
 	}

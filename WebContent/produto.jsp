@@ -53,9 +53,10 @@
 	                                      </div>
                                       <input type="hidden" name="cd_func" value="9"/>
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">Valor Total </label>
+                                          <label for="valor_total" class="control-label col-lg-2">Valor Total </label>
                                           <div class="col-lg-5" style="margin-top: 8px;">
-                                              <span id="valor_total"></span>
+<!--                                               <input class="form-control" id="valor_total" name="valorTotal" maxlength="8" readonly="readonly" /> -->
+										<span id="valor_total"></span>
                                           </div>
                                       </div> 
                                       <input type="hidden" name="modulo" value="registrar_consumo"/>                                       
