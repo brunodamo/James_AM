@@ -24,13 +24,17 @@
                                       <div class="form-group ">
                                           <label for="cd_hosp" class="control-label col-lg-2">Código da Hosp. <span class="required">*</span></label>
                                           <div class="col-lg-2">
-                                              <input class="form-control" id="cd_hosp" name="codigo" maxlength="8" type="text" required />
+                                              <input class="form-control" id="cd_hosp" name="codigo" maxlength="8" readonly="readonly" value="${hospedagem.codigoHospedagem}" />
                                           </div>
+                                          <label for="cd_hosp" class="control-label col-lg-2">Nome do Hosp. <span class="required">*</span></label>
+                                          <div class="col-lg-5">
+                                              <input class="form-control" id="cd_hosp" name="codigo" maxlength="8" readonly="readonly" value="${hospedagem.cliente.nomePessoa}" />
+                                          </div>
+                                      </div>
                                           <label for="data" class="control-label col-lg-2">Data Solicitação <span class="required">*</span></label>
                                           <div class="col-lg-2">
                                               <input class="form-control" id="data" name="data" maxlength="10" type="text" required />
                                           </div>  
-                                      </div>
                                         <label for="produto_servico" class="control-label col-lg-2">Serviços <span class="required">*</span></label>
                                         <div class="col-lg-5">
 	                                         <select class="form-control m-bot15" id="produto_servico">
@@ -49,7 +53,7 @@
 	                                      </div>
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Valor Total </label>
-                                          <div class="col-lg-10" style="margin-top: 8px;">
+                                          <div class="col-lg-5" style="margin-top: 8px;">
                                               <span id="valor_total"></span>
                                           </div>
                                       </div>                                         

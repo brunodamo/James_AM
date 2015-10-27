@@ -8,9 +8,50 @@
     <title>Hotel Boa Viagem | ${title}</title>
 	<%@ include file="imports.jsp"%>
 
-  </head>
+		<c:if test="${msg == 'Código de Hospedagem Inválido!'}">
+			<script>
+				$(window).load(function(){
+				noty({
+						layout: 'top',
+						type: 'warning',
+						text: '${msg}',
+						dismissQueue: true, 
+						animation: {
+						open: {height: 'toggle'},
+						close: {height: 'toggle'},
+						easing: 'swing',
+						speed: 500 
+							},
+						timeout: 0
+						});
+				});          
+			</script>
+		</c:if>
+		<c:if test="${msg == 'Código da Hospedagem Validado!'}">
+			<script>
+				$(window).load(function(){
+				noty({
+						layout: 'top',
+						type: 'success',
+						text: '${msg}',
+						dismissQueue: true, 
+						animation: {
+						open: {height: 'toggle'},
+						close: {height: 'toggle'},
+						easing: 'swing',
+						speed: 500 
+							},
+						timeout: 0
+						});
+				});          
+			</script>
+		</c:if>
+	</head>
 
   <body>
+  <c:if test="">
+  
+  </c:if>
   <!-- container section start -->
   <section id="container" class="">
       <!--header start-->
@@ -22,6 +63,8 @@
             <!--logo start-->
             <a href="index.jsp" class="logo">Hotel <span class="lite">Boa Viagem</span></a>
             <!--logo end-->
+            
+            
 
 
          

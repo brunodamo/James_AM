@@ -42,12 +42,17 @@ public class James extends HttpServlet {
 			if (HospedagemBO.validaCodigo(codHosp, conexao)){
 				request.setAttribute("hospedagem", HospedagemBO.retornaHospedagem(codHosp, conexao));
 				request.setAttribute("msg", "Código da Hospedagem Validado!");
-				request.getRequestDispatcher("servico.jsp").forward(request, response);
+			}
+			int onde = Integer.parseInt(request.getParameter("redirecionar"));
+			if(onde == 1){
+				carregarItens(request, response, 1);
+			}else{
+				carregarItens(request, response, 2);
 			}
 		}catch (Exception e){
-			request.setAttribute("msg", "Código de Hospedagem Inválido!");
-			request.getRequestDispatcher("cd_hosp_servico.jsp").forward(request, response);
 			e.printStackTrace();
+			request.setAttribute("msg", "Código de Hospedagem Inválido!");
+			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);
 		}
 	}
 
@@ -73,25 +78,38 @@ public class James extends HttpServlet {
 		ConsumoBO.inserir(c, ConnectionFactory.controlarInstancia().getConnection("", ""));
 	}
 
-	public void carregarProdutos(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.setAttribute("produtos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 1));
-		request.getRequestDispatcher("produto.jsp").forward(request, response);
+	public void carregarItens(HttpServletRequest request, HttpServletResponse response, int tipo) throws Exception{
+		if(tipo == 1){
+			request.setAttribute("produtos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 1));
+			request.getRequestDispatcher("produto.jsp").forward(request, response);			
+		}else{
+			request.setAttribute("servicos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 2));
+			request.getRequestDispatcher("servico.jsp").forward(request, response);
+		}
 	}
 
-	public void carregarServicos(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.setAttribute("servicos", HistPrecoBO.selecionar(ConnectionFactory.controlarInstancia().getConnection("", ""), 2));
-		request.getRequestDispatcher("servico.jsp").forward(request, response);
+	public void redirecionar(HttpServletRequest request, HttpServletResponse response, int onde) throws Exception{
+		if(onde == 1){
+			request.setAttribute("redirect", 1);
+			request.setAttribute("titulo", "PRODUTO");
+			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);			
+		}else{
+			request.setAttribute("titulo", "SERVIÇO");
+			request.setAttribute("redirect", 2);
+			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);
+		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			if(request.getParameter("modulo").equals("carregarProdutos")){
-				carregarProdutos(request, response);
-			}else if(request.getParameter("modulo").equals("carregarSevicos")){
-				carregarServicos(request, response);
+			if(request.getParameter("modulo").equals("irServico")){
+				redirecionar(request, response, 2);
+			}else if(request.getParameter("modulo").equals("irProduto")){
+				redirecionar(request, response, 1);
 			}
 		}catch(Exception e){
 			e.printStackTrace();

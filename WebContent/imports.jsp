@@ -16,7 +16,6 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/style-responsive.css" rel="stylesheet" />
 
-
  <!-- javascripts -->
  <script src="js/jquery.js"></script>
  <script src="js/bootstrap.min.js"></script>
@@ -34,3 +33,10 @@
  <script src="js/main_james.js"></script>
  <script src="js/numeral.js"></script>
     
+ <!-- noty -->
+<script src="js/noty/jquery.noty.js" type="text/javascript" ></script>
+<script type="text/javascript" src="js/noty/layouts/top.js"></script>
+<script type="text/javascript" src="js/noty/layouts/center.js"></script>
+<script type="text/javascript" src="js/noty/layouts/bottom.js"></script>
+<script type="text/javascript" src="js/noty/layouts/inline.js"></script>
+<script type="text/javascript" src="js/noty/themes/default.js"></script>
