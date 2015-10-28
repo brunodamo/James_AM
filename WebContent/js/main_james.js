@@ -5,16 +5,16 @@ $(window).load(function(){
 	$('#qtd').change(function(){
 		valor_total();
 	});
+	
 	$('#produto_servico').change(function(){
-		valor_total();
-	});
-	$('#produto_servico').ready(function(){
 		valor_total();
 	});
 	
 	$('#cancela').click(function(){
 		perguntar();	
 	});
+	
+	valor_total();
 	
 });
 

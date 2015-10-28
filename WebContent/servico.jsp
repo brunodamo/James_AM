@@ -39,7 +39,7 @@
                                         <div class="col-lg-5">
 	                                         <select class="form-control m-bot15" id="produto_servico">
 	                                             <c:forEach var="n" items="${servicos}">
-	                                             		<option valor="${n.preco}">${n.produtoServico.descricaoServico}</option>
+	                                             		<option valor="${n.preco}">${n.produtoServico.descricaoServico} - <fmt:formatNumber value="${n.preco}" type="currency" /></option>
 	                                             </c:forEach>
 	                                         </select>
 	                                     </div>
