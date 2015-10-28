@@ -8,6 +8,27 @@
     <title>Hotel Boa Viagem | ${title}</title>
 	<%@ include file="imports.jsp"%>
 
+
+
+		<c:if test="${erro == false}">
+			<script>
+				$(document).ready(function(){
+				noty({
+						layout: 'top',
+						type: 'success',
+						text: '${msg}',
+						dismissQueue: true, 
+						animation: {
+						open: {height: 'toggle'},
+						close: {height: 'toggle'},
+						easing: 'swing',
+						speed: 500 
+							},
+						timeout: 1000
+						});
+				});          
+			</script>
+		</c:if>
 		<c:if test="${erro}">
 			<script>
 				$(window).load(function(){
@@ -27,28 +48,9 @@
 				});          
 			</script>
 		</c:if>
-		<c:if test="${erro == false}">
+		<c:if test="${registrado}">
 			<script>
-				$(window).load(function(){
-				noty({
-						layout: 'top',
-						type: 'success',
-						text: '${msg}',
-						dismissQueue: true, 
-						animation: {
-						open: {height: 'toggle'},
-						close: {height: 'toggle'},
-						easing: 'swing',
-						speed: 500 
-							},
-						timeout: 1000
-						});
-				});          
-			</script>
-		</c:if>
-			<c:if test="${registrado}">
-			<script>
-				$(window).load(function(){
+				$(document).ready(function(){
 				noty({
 						layout: 'center',
 						type: 'success',

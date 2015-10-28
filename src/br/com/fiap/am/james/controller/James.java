@@ -31,13 +31,13 @@ public class James extends HttpServlet {
 	public James() {
 		super();
 	}
-	
+
 	/**
 	 * Atributo de conexao
 	 */
 	private Connection conexao = null;
 
-	
+
 	/**
 	 * Metodo que valida se o codigo da hospedagem existe
 	 * @param request
@@ -63,10 +63,15 @@ public class James extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro", true);
 			request.setAttribute("msg", "Código de Hospedagem Inválido!");
-			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);
+			if (request.getParameter("modulo").equals("irProduto")){
+				response.sendRedirect("midlet?modulo=irProduto");
+			}else{
+				response.sendRedirect("midlet?modulo=irServico");
+			}
 		}
 	}
-	
+
+
 	/**
 	 * Metodo que registra o consumo
 	 * @param request
@@ -108,7 +113,7 @@ public class James extends HttpServlet {
 	 */
 	public void carregarItens(HttpServletRequest request, HttpServletResponse response, int tipo) throws Exception{
 		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
-				if(tipo == 1){
+		if(tipo == 1){
 			request.setAttribute("produtos", HistPrecoBO.selecionar(conexao, 1));
 			request.getRequestDispatcher("produto.jsp").forward(request, response);			
 		}else{
@@ -116,7 +121,7 @@ public class James extends HttpServlet {
 			request.getRequestDispatcher("servico.jsp").forward(request, response);
 		}
 	}
-	
+
 	/**
 	 * Metodo que verifica se o consumo sera de produto ou servico
 	 * @param request
@@ -135,7 +140,7 @@ public class James extends HttpServlet {
 			request.getRequestDispatcher("cd_hosp.jsp").forward(request, response);
 		}
 	}
-	
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

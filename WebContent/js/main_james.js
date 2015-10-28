@@ -14,6 +14,10 @@ $(window).load(function(){
 		perguntar();	
 	});
 	
+	$('#valida').click(function(){
+		validar();	
+	});
+	
 	valor_total();
 	
 });
@@ -51,4 +55,23 @@ function perguntar(){
 
 
     })
+}
+
+function validar(){
+	$(window).load(function(){
+		alert ('teste3');
+		noty({
+				layout: 'top',
+				type: 'success',
+				text: 'teste',
+				dismissQueue: true, 
+				animation: {
+				open: {height: 'toggle'},
+				close: {height: 'toggle'},
+				easing: 'swing',
+				speed: 500 
+					},
+				timeout: 1000
+				});
+		});          
 }

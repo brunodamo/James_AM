@@ -20,7 +20,7 @@
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="midlet">
                                       <div class="form-group ">
                                           <label for="cd_hosp" class="control-label col-lg-2">Código da Hosp. <span class="required">*</span></label>
                                           <div class="col-lg-2">

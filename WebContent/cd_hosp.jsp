@@ -30,7 +30,7 @@
                                           <input type="hidden" name="redirecionar" value="${redirect}"/>
                                       <div class="form-group">
                                           <div class="col-lg-offset col-lg-2">
-                                              <button class="btn btn-primary" type="submit">Consultar</button>
+                                              <button class="btn btn-primary" name="valida" id="valida" type="submit">Consultar</button>
                                           </div>
                                       </div>
                                   </form>
