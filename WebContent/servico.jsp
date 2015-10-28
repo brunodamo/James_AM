@@ -28,7 +28,7 @@
                                           </div>
                                           <label for="cd_hosp" class="control-label col-lg-2">Nome do Hosp. <span class="required">*</span></label>
                                           <div class="col-lg-5">
-                                              <input class="form-control" id="cd_hosp" name="codigo" readonly="readonly" value="${hospedagem.cliente.nomePessoa}" />
+                                              <input class="form-control" id="cd_hosp" name="nome" readonly="readonly" value="${hospedagem.cliente.nomePessoa}" />
                                           </div>
                                       </div>
                                           <label for="data" class="control-label col-lg-2">Data Solicitação <span class="required">*</span></label>
@@ -37,9 +37,9 @@
                                           </div>  
                                         <label for="produto_servico" class="control-label col-lg-2">Serviços <span class="required">*</span></label>
                                         <div class="col-lg-5">
-	                                         <select class="form-control m-bot15" id="produto_servico">
+	                                         <select class="form-control m-bot15" id="produto_servico" name="produto_servico">
 	                                             <c:forEach var="n" items="${servicos}">
-	                                             		<option valor="${n.preco}">${n.produtoServico.descricaoServico} - <fmt:formatNumber value="${n.preco}" type="currency" /></option>
+	                                             		<option value="${n.produtoServico.codigoTipoServico}" valor="${n.preco}">${n.produtoServico.descricaoServico} - <fmt:formatNumber value="${n.preco}" type="currency" /></option>
 	                                             </c:forEach>
 	                                         </select>
 	                                     </div>
@@ -51,11 +51,13 @@
 	                                              </c:forEach>
 	                                          </select>
 	                                      </div>
+	                                      <input type="hidden" name="cd_func" value="9"/>
                                       <div class="form-group ">
                                           <label for="valor_total" class="control-label col-lg-2">Valor Total </label>
                                           <div class="col-lg-5" style="margin-top: 8px;">
 											<input class="form-control" id="valor_total" name="valor_total"  readonly="readonly" />                                          </div>
-                                      </div>                                         
+                                      </div>                       
+                                      <input type="hidden" name="modulo" value="registrar_consumo"/>                    
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
                                               <button class="btn btn-primary" type="submit">Registrar</button>
