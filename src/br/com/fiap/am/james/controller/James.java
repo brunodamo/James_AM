@@ -33,9 +33,14 @@ public class James extends HttpServlet {
 	}
 
 	/**
-	 * Atributo de conexao
+	 * Metodo que instancia a conexao
+	 * @throws Exception
+	 * @return conexao
 	 */
-	private Connection conexao = null;
+	public Connection instanciaConexao() throws Exception{
+		Connection conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
+		return conexao;
+	}
 
 
 	/**
@@ -46,10 +51,9 @@ public class James extends HttpServlet {
 	 */
 	public void validarHospede (HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 			int codHosp = Integer.parseInt(request.getParameter("codHosp"));
-			if (HospedagemBO.validaCodigo(codHosp, conexao)){
-				request.setAttribute("hospedagem", HospedagemBO.retornaHospedagem(codHosp, conexao));
+			if (HospedagemBO.validaCodigo(codHosp, instanciaConexao())){
+				request.setAttribute("hospedagem", HospedagemBO.retornaHospedagem(codHosp, instanciaConexao()));
 				request.setAttribute("erro", false);
 				request.setAttribute("msg", "Código da Hospedagem Validado!");
 			}
@@ -79,7 +83,6 @@ public class James extends HttpServlet {
 	 * @throws Exception
 	 */
 	public void registrarConsumo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 		ConsumoBean c = new ConsumoBean();
 		HospedagemBean h = new HospedagemBean();
 		c.setHospedagem(h);
@@ -98,7 +101,7 @@ public class James extends HttpServlet {
 		FuncionarioBean f = new FuncionarioBean();
 		c.setFuncionario(f);
 		c.getFuncionario().setCodigoPessoa(Integer.parseInt(request.getParameter("cd_func")));
-		ConsumoBO.inserir(c, conexao);
+		ConsumoBO.inserir(c, instanciaConexao());
 		request.setAttribute("registrado", true);
 		request.setAttribute("msg", "Consumo registrado com sucesso!");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -112,12 +115,11 @@ public class James extends HttpServlet {
 	 * @throws Exception
 	 */
 	public void carregarItens(HttpServletRequest request, HttpServletResponse response, int tipo) throws Exception{
-		conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
 		if(tipo == 1){
-			request.setAttribute("produtos", HistPrecoBO.selecionar(conexao, 1));
+			request.setAttribute("produtos", HistPrecoBO.selecionar(instanciaConexao(), 1));
 			request.getRequestDispatcher("produto.jsp").forward(request, response);			
 		}else{
-			request.setAttribute("servicos", HistPrecoBO.selecionar(conexao, 2));
+			request.setAttribute("servicos", HistPrecoBO.selecionar(instanciaConexao(), 2));
 			request.getRequestDispatcher("servico.jsp").forward(request, response);
 		}
 	}
