@@ -17,9 +17,9 @@ public class HospedagemDAO {
 	
 	/**
 	 * Metodo que compara com o banco se existe codigo inserido no front
-	 * @param cdHospedagem
-	 * @param conexao
-	 * @return
+	 * @param Codigo da Hospedagem
+	 * @param Objeto Connection
+	 * @return Objeto HospedagemBean encontrado
 	 * @throws Exception
 	 */
 	public HospedagemBean select (int cdHospedagem, Connection conexao) throws Exception{

@@ -18,9 +18,9 @@ public class HistPrecoDAO {
 
 	/**
 	 * Metodo que da select em todos HistPrecoBean do banco
-	 * @param conexao
-	 * @param tipo
-	 * @return
+	 * @param Objeto Connection
+	 * @param tipo(1 = produto e 2 = serviço)
+	 * @return Lista de HistPrecoBean
 	 * @throws Exception
 	 */
 	public List<HistPrecoBean> selectAll (Connection conexao, int tipo) throws Exception {

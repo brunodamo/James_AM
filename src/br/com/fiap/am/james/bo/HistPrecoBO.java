@@ -10,9 +10,9 @@ public abstract class HistPrecoBO {
 	
 	/**
 	 * Metodo que traz todos HisPrecoBeans presentes no banco para a servlet
-	 * @param conexao
-	 * @param tipo
-	 * @return
+	 * @param Objeto Connection
+	 * @param tipo(1 = produto e 2 = serviço)
+	 * @return Lista de HistPrecoBean
 	 * @throws Exception
 	 */
 	public static List<HistPrecoBean> selecionar (Connection conexao, int tipo) throws Exception {

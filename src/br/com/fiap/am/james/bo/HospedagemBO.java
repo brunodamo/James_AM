@@ -12,7 +12,7 @@ public abstract class HospedagemBO {
 	 * Metodo que valida o codigo de hospeag
 	 * @param cdHosp
 	 * @param conexao
-	 * @return
+	 * @return true ou Excecao
 	 * @throws Exception
 	 */
 	public static boolean validaCodigo(int cdHosp, Connection conexao) throws Exception{
@@ -27,7 +27,7 @@ public abstract class HospedagemBO {
 	 * Metodo que retorna o bean completo da hospedagem
 	 * @param cdHosp
 	 * @param conexao
-	 * @return
+	 * @return Objeto HospedagemBean
 	 * @throws Exception
 	 */
 	public static HospedagemBean retornaHospedagem(int cdHosp, Connection conexao) throws Exception{

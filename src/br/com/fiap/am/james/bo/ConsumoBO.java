@@ -39,9 +39,9 @@ public abstract class ConsumoBO {
 	
 	/**
 	 * Metodo que verifica regras de negócio antes de realizar uma atualizacao
-	 * @param c
-	 * @param conexao
-	 * @return
+	 * @param Objeto ConsumoBean
+	 * @param Objeto Connection
+	 * @return Numéro de linhas atualizadas
 	 * @throws Exception
 	 */
 	public static int atualizar (ConsumoBean c, Connection conexao) throws Exception {

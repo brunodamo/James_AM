@@ -27,8 +27,8 @@ public class ConsumoDAO {
 
 	/**
 	 * Metodo para inserir um registro de ConsumoBean
-	 * @param c
-	 * @param conexao
+	 * @param Objeto ConsumoBean
+	 * @param Objeto Connection
 	 * @throws Exception
 	 */
 	public void insert (ConsumoBean c, Connection conexao)throws Exception{
@@ -43,9 +43,9 @@ public class ConsumoDAO {
 	}
 	/**
 	 * Metodo para atualizar um registro de ConsumoBean
-	 * @param c
-	 * @param conexao
-	 * @return
+	 * @param Objeto ConsumoBean
+	 * @param Objeto Connection
+	 * @return Numéro de linhas atualizadas
 	 * @throws Exception
 	 */
 	public int update (ConsumoBean c, Connection conexao) throws Exception{
