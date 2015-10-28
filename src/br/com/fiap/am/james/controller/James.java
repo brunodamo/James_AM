@@ -38,7 +38,7 @@ public class James extends HttpServlet {
 	 * @return conexao
 	 */
 	public Connection instanciaConexao() throws Exception{
-		Connection conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73871","171192");
+		Connection conexao = ConnectionFactory.controlarInstancia().getConnection("OPS$RM73872","290992");
 		return conexao;
 	}
 
@@ -68,9 +68,9 @@ public class James extends HttpServlet {
 			request.setAttribute("erro", true);
 			request.setAttribute("msg", "Código de Hospedagem Inválido!");
 			if (request.getParameter("modulo").equals("irProduto")){
-				response.sendRedirect("midlet?modulo=irProduto");
+				redirecionar(request, response, 1);
 			}else{
-				response.sendRedirect("midlet?modulo=irServico");
+				redirecionar(request, response, 2);
 			}
 		}
 	}
