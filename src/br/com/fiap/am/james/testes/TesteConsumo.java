@@ -9,6 +9,7 @@ import br.com.fiap.am.james.beans.ConsumoBean;
 import br.com.fiap.am.james.beans.FuncionarioBean;
 import br.com.fiap.am.james.beans.HospedagemBean;
 import br.com.fiap.am.james.beans.ProdutoServicoBean;
+import br.com.fiap.am.james.bo.ConsumoBO;
 import br.com.fiap.am.james.bo.HospedagemBO;
 import br.com.fiap.am.james.conexao.ConnectionFactory;
 import br.com.fiap.am.james.excecoes.Excecao;
@@ -44,6 +45,7 @@ public class TesteConsumo {
 				FuncionarioBean func = new FuncionarioBean();
 				func.setCodigoPessoa(Integer.parseInt(JOptionPane.showInputDialog("Insira o código do funcionario")));
 				c.setFuncionario(func);
+				ConsumoBO.inserir(c, con);
 			}while(JOptionPane.showConfirmDialog(null, "Continuar Cadastrando?", "Camadas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0);
 		}catch (Exception e){
 			System.out.println(e);
