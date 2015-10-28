@@ -67,7 +67,7 @@ public class James extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro", true);
 			request.setAttribute("msg", "Código de Hospedagem Inválido!");
-			if (request.getParameter("modulo").equals("irProduto")){
+			if (Integer.parseInt(request.getParameter("redirecionar")) == 1){
 				redirecionar(request, response, 1);
 			}else{
 				redirecionar(request, response, 2);
