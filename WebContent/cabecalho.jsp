@@ -13,57 +13,57 @@
 		<c:if test="${erro == false}">
 			<script>
 				$(document).ready(function(){
-				noty({
-						layout: 'top',
-						type: 'success',
-						text: '${msg}',
-						dismissQueue: true, 
-						animation: {
-						open: {height: 'toggle'},
-						close: {height: 'toggle'},
-						easing: 'swing',
-						speed: 500 
-							},
-						timeout: 1000
-						});
+					noty({
+							layout: 'top',
+							type: 'success',
+							text: '${msg}',
+							dismissQueue: true, 
+							animation: {
+							open: {height: 'toggle'},
+							close: {height: 'toggle'},
+							easing: 'swing',
+							speed: 500 
+								},
+							timeout: 1000
+							});
 				});          
 			</script>
 		</c:if>
-		<c:if test="${erro}">
+		<c:if test="${erro == true}">
 			<script>
-				$(window).load(function(){
-				noty({
-						layout: 'top',
-						type: 'warning',
-						text: '${msg}',
-						dismissQueue: true, 
-						animation: {
-						open: {height: 'toggle'},
-						close: {height: 'toggle'},
-						easing: 'swing',
-						speed: 500 
-							},
-						timeout: 1000
-						});
+				$(document).ready(function(){
+					noty({
+							layout: 'top',
+							type: 'warning',
+							text: '${msg}',
+							dismissQueue: true, 
+							animation: {
+							open: {height: 'toggle'},
+							close: {height: 'toggle'},
+							easing: 'swing',
+							speed: 500 
+								},
+							timeout: 1000
+							});
 				});          
 			</script>
 		</c:if>
 		<c:if test="${registrado}">
 			<script>
 				$(document).ready(function(){
-				noty({
-						layout: 'center',
-						type: 'success',
-						text: '${msg}',
-						dismissQueue: true, 
-						animation: {
-						open: {height: 'toggle'},
-						close: {height: 'toggle'},
-						easing: 'swing',
-						speed: 500 
-							},
-						timeout: 0
-						});
+					noty({
+							layout: 'center',
+							type: 'success',
+							text: '${msg}',
+							dismissQueue: true, 
+							animation: {
+							open: {height: 'toggle'},
+							close: {height: 'toggle'},
+							easing: 'swing',
+							speed: 500 
+								},
+							timeout: 0
+							});
 				});          
 			</script>
 		</c:if>
