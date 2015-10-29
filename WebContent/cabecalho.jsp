@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
 	
-    <title>Hotel Boa Viagem | ${title}</title>
+    <title>Hotel Boa Viagem</title>
 	<%@ include file="imports.jsp"%>
 
 
